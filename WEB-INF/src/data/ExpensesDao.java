@@ -135,4 +135,24 @@ public class ExpensesDao {
 		return rowCnt;
 	}
 	
+	// 経費データの削除
+	public int delete(int id) {
+		// 更新レコード数
+		int rowCnt = 0;
+		String sql = "DELETE FROM expenses WHERE id =?;";
+		// データベースへの接続・SQL文の送信準備
+		try (Connection connection = DriverManager.getConnection(Constants.URL, Constants.USER, Constants.PASSWORD);
+				PreparedStatement statement = connection.prepareStatement(sql))
+		{
+			// SQL文の?を更新するデータで置き換える
+			statement.setInt(1, id);
+			// SQL文を実行
+			rowCnt = statement.executeUpdate();
+		} catch (SQLException e) {
+			System.out.println(Constants.DE004 + e.getMessage());
+		}
+		// 更新レコード数を返す
+		return rowCnt;
+	}
+	
 }
