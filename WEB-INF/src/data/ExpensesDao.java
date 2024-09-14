@@ -110,4 +110,29 @@ public class ExpensesDao {
 		return rowCnt;
 	}
 	
+	// 経費データの更新
+	public int update(ExpensesDto data) {
+		// 更新レコード数
+		int rowCnt = 0;
+		String sql = "UPDATE expenses SET name = ?, price = ?, date = ?, category_id = ?, memo = ? WHERE id =?;";
+		// データベースへの接続・SQL文の送信準備
+		try (Connection connection = DriverManager.getConnection(Constants.URL, Constants.USER, Constants.PASSWORD);
+				PreparedStatement statement = connection.prepareStatement(sql))
+		{
+			// SQL文の?を更新するデータで置き換える
+			statement.setString(1, data.getName());
+			statement.setInt(2, data.getPrice());
+			statement.setObject(3, data.getDate());
+			statement.setInt(4, data.getCategory_id());
+			statement.setString(5, data.getMemo());
+			statement.setInt(6, data.getId());
+			// SQL文を実行
+			rowCnt = statement.executeUpdate();
+		} catch (SQLException e) {
+			System.out.println(Constants.DE003 + e.getMessage());
+		}
+		// 更新レコード数を返す
+		return rowCnt;
+	}
+	
 }

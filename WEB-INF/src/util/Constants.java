@@ -16,5 +16,5 @@ public class Constants {
 	// 経費データ関連
 	public static final String DE001 = "経費データ読み取り失敗：";
 	public static final String DE002 = "経費データ追加失敗：";
-	
+	public static final String DE003 = "経費データ更新失敗：";
 }
