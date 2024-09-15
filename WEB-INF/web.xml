@@ -10,4 +10,14 @@
     	<welcome-file>index.jsp</welcome-file>
     </welcome-file-list>
     
+    <!-- データ一覧ページ用Servletの定義・URL紐付け -->
+    <servlet>
+    	<servlet-name>list_servlet</servlet-name>
+    	<servlet-class>servlet.ListServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+    	<servlet-name>list_servlet</servlet-name>
+    	<url-pattern>/list</url-pattern>
+    </servlet-mapping>
+    
 </web-app>
