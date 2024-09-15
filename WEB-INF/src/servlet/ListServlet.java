@@ -2,6 +2,7 @@ package servlet;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Objects;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -21,13 +22,17 @@ public class ListServlet extends HttpServlet {
 		req.setCharacterEncoding("UTF-8");
 		resp.setContentType("text/html; charset=UTF-8");
 		
+		// JSPからのリクエストデータ取得
+		String order = req.getParameter("order");
+		order = Objects.toString(order, "");
+		
 		// 経費データリストのインスタンスを生成
 		ArrayList<ExpensesDto> expensesDataList = new ArrayList<>();
 		// 経費データ操作用DAOのインスタンス生成
 		ExpensesDao expensesData = new ExpensesDao();
 		try {
-			// 経費データの一覧を取得(ID指定・並べ替え・キーワードなし)
-			expensesDataList = expensesData.select(0, "", "");
+			// 経費データの一覧を取得(ID指定・検索なし)
+			expensesDataList = expensesData.select(0, "", order);
 			if (expensesDataList.isEmpty()) {
 				// 経費データリストが空だった場合は失敗メッセージを保存
 				req.setAttribute(Constants.FAILURE_MESSAGE, Constants.NODATA_EXPENSES_MESSAGE);

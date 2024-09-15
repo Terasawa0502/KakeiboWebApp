@@ -24,6 +24,8 @@
 	</header>
 	<main>
 		<article class="products">
+			<!-- TODO:今月のデータを円グラフ表示する -->
+			<!-- TODO:今月のデータ一覧を表示する -->
 			<h1>データ一覧</h1>
 			<%
 			// 失敗メッセージがあれば表示
@@ -32,6 +34,16 @@
 				out.println("<p class='failure'>" + failureMessage + "</p>");
 			}
 			%>
+			<div class="products-ui">
+				<div>
+					<a href="<%=request.getContextPath()%>/list?order=desc">
+						<img src="images/desc.png" alt="降順に並び替え" class="sort-img">
+					</a>
+					<a href="<%=request.getContextPath()%>/list?order=asc">
+						<img src="images/asc.png" alt="昇順に並び替え" class="sort-img">
+					</a>
+				</div>
+			</div>
 			<table class="products-table">
 				<tr>
 					<th class="hidden-id">ID</th>
