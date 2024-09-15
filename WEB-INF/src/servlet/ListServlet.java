@@ -28,7 +28,7 @@ public class ListServlet extends HttpServlet {
 		String keyword = req.getParameter("keyword");
         keyword = Objects.toString(keyword, "");
 		
-		// 経費データリストのインスタンスを生成
+		// 経費データリストのインスタンス生成
 		ArrayList<ExpensesDto> expensesDataList = new ArrayList<>();
 		// 経費データ操作用DAOのインスタンス生成
 		ExpensesDao expensesData = new ExpensesDao();

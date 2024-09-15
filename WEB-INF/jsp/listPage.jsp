@@ -34,6 +34,7 @@
          order = Objects.toString(order, ""); // NULLは空文字に置き換え
          %>
 		<article class="products">
+			<!-- TODO:今月のデータをカレンダー表示する -->
 			<!-- TODO:今月のデータを円グラフ表示する -->
 			<!-- TODO:今月のデータ一覧を表示する -->
 			<h1>データ一覧</h1>
@@ -56,6 +57,7 @@
                          <input type="hidden" name="order" value="<%=order%>"> <input type="text" class="search-box" placeholder="購入品で検索" name="keyword" value="<%=keyword%>">
                      </form>
 				</div>
+				<a href="<%= request.getContextPath() %>/register" class="btn">データ登録</a>
 			</div>
 			<table class="products-table">
 				<tr>

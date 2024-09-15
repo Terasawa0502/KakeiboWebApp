@@ -20,4 +20,14 @@
     	<url-pattern>/list</url-pattern>
     </servlet-mapping>
     
+    <!-- データ登録ページ用のServletの定義・URL紐付け -->
+    <servlet>
+    	<servlet-name>register_servlet</servlet-name>
+    	<servlet-class>servlet.RegisterServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+    	<servlet-name>register_servlet</servlet-name>
+    	<url-pattern>/register</url-pattern>
+    </servlet-mapping>
+    
 </web-app>
