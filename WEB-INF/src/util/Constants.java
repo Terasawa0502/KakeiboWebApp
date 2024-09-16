@@ -37,7 +37,7 @@ public class Constants {
 	public static final String REGISTER_DATA_MESSAGE = "件のデータを登録しました。";
 	//  共通部品
 	public static final String FAILURE_MESSAGE = "failureMessage";
-	public static final String SUCCESS_MESSAGE = "sucessMessage";
+	public static final String SUCCESS_MESSAGE = "successMessage";
 	public static final String EXPENSES_DATA_LIST = "expensesDataList";
 	public static final String CATEGORIES_DATA_LIST = "categoriesDataList";
 	public static final String LIST_SERVLET_PAGE = "/list";
