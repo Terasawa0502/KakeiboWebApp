@@ -84,7 +84,7 @@
 	        					String tempCategoryId = Integer.toString(categoriesData.getCategory_id());
 	        					// 直前のカテゴリー名と一致した場合は選択状態にする
 	        					String selected = Objects.equals(categoryId, tempCategoryId) ? "selected" : "";
-	        					out.println("<option value='" + categoriesData.getCategory_id() + "'" + selected + ">"
+	        					out.println("<option value='" + categoriesData.getCategory_id() + "' " + selected + ">"
 	        							+ categoriesData.getCategory_name() + "</option>");
 	        				}
 	        			}
