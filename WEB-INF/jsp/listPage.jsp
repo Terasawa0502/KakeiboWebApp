@@ -72,6 +72,7 @@
 					<th>カテゴリー</th>
 					<th>日付</th>
 					<th>メモ</th>
+					<th>編集</th>
 				</tr>
 				<%
 				ArrayList<ExpensesDto> expensesDataList = (ArrayList<ExpensesDto>) request.getAttribute("expensesDataList");
@@ -95,6 +96,8 @@
 						out.println("<td>" + categoryName + "</td>");
 						out.println("<td>" + expensesData.getDate() + "</td>");
 						out.println("<td>" + expensesData.getMemo() + "</td>");
+						out.println("<td><a href='" + request.getContextPath() + "/edit?id="
+								+ expensesData.getId() + "'><img src='images/edit.png' alt='編集' class='edit-icon'></a></td>");
 						out.println("</tr>");
 					}
 				}
