@@ -30,6 +30,16 @@
     	<url-pattern>/register</url-pattern>
     </servlet-mapping>
     
+    <!-- データ編集ページ用のServletの定義・URL紐付け -->
+    <servlet>
+    	<servlet-name>edit_servlet</servlet-name>
+    	<servlet-class>servlet.EditServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+    	<servlet-name>edit_servlet</servlet-name>
+    	<url-pattern>/edit</url-pattern>
+    </servlet-mapping>
+    
     <!-- データ登録機能用のServletの定義・URL紐付け -->
     <servlet>
     	<servlet-name>insert_servlet</servlet-name>
