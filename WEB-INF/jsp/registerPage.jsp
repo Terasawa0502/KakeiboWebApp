@@ -1,3 +1,5 @@
+<%@page import="java.time.format.DateTimeFormatter"%>
+<%@page import="java.time.LocalDate"%>
 <%@page import="data.CategoriesDto"%>
 <%@page import="java.util.ArrayList"%>
 <%@ page contentType="text/html; charset=UTF-8" %>
@@ -31,9 +33,16 @@
 	        		<label for="price">値段</label>
 	        		<input type="number" id="price" name="price" min="0" max="100000000" required>
 	        		<label for="date">日付</label>
-	        		<input type="date" id="date" name="date" required>
+	        		<%
+	        		// 当日の日付を取得
+        			LocalDate today = LocalDate.now();
+        			// 日付を文字列に変換("yyyy-MM-dd")
+        			DateTimeFormatter fmt = DateTimeFormatter.ofPattern("yyyy-MM-dd");
+        			String todayDate = today.format(fmt);
+	        		%>
+	        		<input type="date" id="date" name="date" value="<%= todayDate %>" required>
 	        		<label for="memo">メモ</label>
-	        		<input type="text" id="memo" name="memo" maxlength="50" required>
+	        		<input type="text" id="memo" name="memo" maxlength="50">
 	        		<label for="category_name">カテゴリー</label>
 	        		<select id="category_name" name="category_name" required>
 	        			<option disabled selected value>カテゴリーを選択してください</option>
