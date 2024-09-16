@@ -11,6 +11,7 @@ import javax.servlet.http.HttpServletResponse;
 import data.CategoriesDao;
 import data.CategoriesDto;
 import util.Constants;
+import util.ForwardLibrary;
 
 //経費データ登録ページ用Servlet
 public class RegisterServlet extends HttpServlet {
@@ -38,9 +39,8 @@ public class RegisterServlet extends HttpServlet {
 			// データベース処理の例外発生時
 			req.setAttribute(Constants.FAILURE_MESSAGE, Constants.DB_EXCEPTION_MESSAGE);
 		}
-		
-		// フォワードによる画面遷移
-		req.getRequestDispatcher(Constants.REGISTER_PAGE_JSP).forward(req, resp);
+		// 登録画面にフォワードで画面遷移
+		ForwardLibrary.pageForward(Constants.REGISTER_PAGE_JSP, req, resp);
 	}
 
 }
