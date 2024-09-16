@@ -60,4 +60,13 @@
     	<url-pattern>/update</url-pattern>
     </servlet-mapping>
     
+    <!-- データ削除機能用のServletの定義・URL紐付け -->
+    <servlet>
+    	<servlet-name>delete_servlet</servlet-name>
+    	<servlet-class>servlet.DeleteServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+    	<servlet-name>delete_servlet</servlet-name>
+    	<url-pattern>/delete</url-pattern>
+    </servlet-mapping>
 </web-app>
