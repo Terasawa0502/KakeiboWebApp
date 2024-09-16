@@ -73,6 +73,7 @@
 					<th>日付</th>
 					<th>メモ</th>
 					<th>編集</th>
+					<th>削除</th>
 				</tr>
 				<%
 				ArrayList<ExpensesDto> expensesDataList = (ArrayList<ExpensesDto>) request.getAttribute("expensesDataList");
@@ -98,6 +99,9 @@
 						out.println("<td>" + expensesData.getMemo() + "</td>");
 						out.println("<td><a href='" + request.getContextPath() + "/edit?id="
 								+ expensesData.getId() + "'><img src='images/edit.png' alt='編集' class='edit-icon'></a></td>");
+						out.println("<td><a href='" + request.getContextPath() + "/delete?id="
+								+ expensesData.getId() + "' onclick=\"return confirm('この操作は元に戻せません。購入品名:" + expensesData.getName() + "を本当に削除しますか？')\">"
+								+ "<img src='images/delete.png' alt='削除' class='delete-icon'></a></td>");
 						out.println("</tr>");
 					}
 				}
