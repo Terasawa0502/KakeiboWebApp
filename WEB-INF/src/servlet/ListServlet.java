@@ -12,6 +12,7 @@ import javax.servlet.http.HttpServletResponse;
 import data.ExpensesDao;
 import data.ExpensesDto;
 import util.Constants;
+import util.ForwardLibrary;
 
 // 経費データ一覧ページ用Servlet
 public class ListServlet extends HttpServlet {
@@ -46,7 +47,24 @@ public class ListServlet extends HttpServlet {
 			// データベース処理の例外発生時
 			req.setAttribute(Constants.FAILURE_MESSAGE, Constants.DB_EXCEPTION_MESSAGE);
 		}
-		// フォワードによる画面遷移
-		req.getRequestDispatcher(Constants.LIST_PAGE_JSP).forward(req, resp);
+		// 一覧画面にフォワードで画面遷移
+		ForwardLibrary.pageForward(Constants.LIST_PAGE_JSP, req, resp);
+	}
+	
+	// POSTメソッドのリクエスト受信時に実行されるメソッド
+    // ※InsertServletのdoPost()メソッドから遷移した場合のみ呼び出される
+	@Override
+	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+		// リクエスト・レスポンスの設定
+        req.setCharacterEncoding("UTF-8");
+        resp.setContentType("text/html; charset=UTF-8");
+        // Servletからの成功メッセージ取得
+        String successMessage = (String) req.getAttribute(Constants.SUCCESS_MESSAGE);
+        if (successMessage != null && !successMessage.isEmpty()) {
+            // 商品一覧ページのJSPへ成功メッセージを受け渡すために再設定
+            req.setAttribute(Constants.SUCCESS_MESSAGE, successMessage);
+        }
+        // doGet()メソッドと同様のデータ取得処理を行う
+        doGet(req, resp);
 	}
 }
