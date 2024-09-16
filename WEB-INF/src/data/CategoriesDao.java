@@ -40,6 +40,7 @@ public class CategoriesDao {
 			while (resultSet.next()) {
 				// DTOのインスタンスにデータをセット
 				CategoriesDto categoriesData = new CategoriesDto();
+				categoriesData.setCategory_id(resultSet.getInt("category_id"));
 				categoriesData.setCategory_name(resultSet.getString("category_name"));
 				categoriesData.setCategory_color(resultSet.getString("category_color"));
 				// リストにデータを追加
