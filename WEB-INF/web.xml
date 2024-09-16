@@ -30,4 +30,14 @@
     	<url-pattern>/register</url-pattern>
     </servlet-mapping>
     
+    <!-- データ登録機能用のServletの定義・URL紐付け -->
+    <servlet>
+    	<servlet-name>insert_servlet</servlet-name>
+    	<servlet-class>servlet.InsertServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+    	<servlet-name>insert_servlet</servlet-name>
+    	<url-pattern>/insert</url-pattern>
+    </servlet-mapping>
+    
 </web-app>
