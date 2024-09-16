@@ -50,4 +50,14 @@
     	<url-pattern>/insert</url-pattern>
     </servlet-mapping>
     
+    <!-- データ更新機能用のServletの定義・URL紐付け -->
+    <servlet>
+    	<servlet-name>update_servlet</servlet-name>
+    	<servlet-class>servlet.UpdateServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+    	<servlet-name>update_servlet</servlet-name>
+    	<url-pattern>/update</url-pattern>
+    </servlet-mapping>
+    
 </web-app>

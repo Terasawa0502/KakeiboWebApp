@@ -36,6 +36,7 @@ public class Constants {
 	public static final String DATE_COVRESION_MESSAGE = "日付の変換処理失敗が発生しました。有効な日付を入力してください。";
 	public static final String NAME_MISS_MESSAGE = "有効な購入品名を入力してください。";
 	public static final String REGISTER_DATA_MESSAGE = "件のデータを登録しました。";
+	public static final String UPDATE_DATA_MESSAGE = "件のデータを更新しました。";
 	//  共通部品
 	public static final String FAILURE_MESSAGE = "failureMessage";
 	public static final String SUCCESS_MESSAGE = "successMessage";
