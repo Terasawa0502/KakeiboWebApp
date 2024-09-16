@@ -33,7 +33,7 @@ public class Constants {
 	public static final String DB_EXCEPTION_MESSAGE = "データベース処理エラーが発生しました。システム管理者に確認してください。";
 	public static final String ID_COVRESION_MESSAGE = "内部エラーが発生しました。システム管理者に確認してください。";
 	public static final String NUMBER_COVRESION_MESSAGE = "数値の入力形式に誤りがあります。有効な数値を入力してください。";
-	public static final String DATE_COVRESION_MESSAGE = "日付の変換処理失敗が発生しました。有効な日付を入力してください。";
+	public static final String DATE_COVRESION_MESSAGE = "日付の入力形式に誤りがあります。有効な日付を入力してください。";
 	public static final String NAME_MISS_MESSAGE = "有効な購入品名を入力してください。";
 	public static final String REGISTER_DATA_MESSAGE = "件のデータを登録しました。";
 	public static final String UPDATE_DATA_MESSAGE = "件のデータを更新しました。";
