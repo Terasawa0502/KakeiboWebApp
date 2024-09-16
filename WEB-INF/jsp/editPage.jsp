@@ -63,7 +63,7 @@
 	        <div class="back">
 	            <a href="<%=request.getContextPath()%>/list" class="btn">&lt; 戻る</a>
 	        </div>
-	        <form action="<%=request.getContextPath()%>/insert" method="post" class="registration-form">
+	        <form action="<%=request.getContextPath()%>/update?id=<%= id %>" method="post" class="registration-form">
 	        	<div>
 	        		<label for="name">購入品名</label>
 	        		<input type="text" id="name" name="name" maxlength="50" value="<%= name %>" required>
@@ -92,7 +92,7 @@
 	        			%>
 	        		</select>
 	        	</div>
-	        	<button type="submit" class="submit-btn" name="submit" value="insert">登録</button>
+	        	<button type="submit" class="submit-btn" name="submit" value="update">更新</button>
 	        </form>
 		</article>
 	</main>
