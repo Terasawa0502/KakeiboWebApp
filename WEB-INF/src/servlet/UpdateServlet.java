@@ -4,10 +4,12 @@ import java.io.IOException;
 import java.time.DateTimeException;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
+
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+
 import data.ExpensesDao;
 import data.ExpensesDto;
 import util.Constants;
@@ -39,10 +41,10 @@ public class UpdateServlet extends HttpServlet {
 			iCategoryId = Integer.parseInt(category_id);
 			// 日付型カラムのデータはString型→date型へ
 			lDate = LocalDate.parse(date, fmt);
-			// 変換処理失敗時は失敗メッセージをリクエストスコープに保存して登録画面へ遷移	
+		// 変換処理失敗時は失敗メッセージをリクエストスコープに保存して登録画面へ遷移	
 		} catch (NumberFormatException e) {
 			// 数値変換処理失敗
-			req.setAttribute(Constants.FAILURE_MESSAGE, Constants.PRICE_COVRESION_MESSAGE);
+			req.setAttribute(Constants.FAILURE_MESSAGE, Constants.NUMBER_COVRESION_MESSAGE);
 			ForwardLibrary.pageForward(Constants.EDIT_PAGE_JSP, req, resp);
 			return;
 		} catch (DateTimeException e) {
