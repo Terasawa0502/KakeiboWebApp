@@ -58,7 +58,6 @@
 	        		date = Objects.toString(date, "");
 	        		// 当日の日付を取得
         			LocalDate today = LocalDate.now();
-	        		date = Objects.toString(date, "");
         			// 日付を文字列に変換("yyyy-MM-dd")
         			DateTimeFormatter fmt = DateTimeFormatter.ofPattern("yyyy-MM-dd");
         			String todayDate = today.format(fmt);
