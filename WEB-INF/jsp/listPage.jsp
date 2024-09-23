@@ -36,9 +36,6 @@
 		<article class="products">
 			<!-- TODO:今月のデータをカレンダー表示する -->
 			<!-- TODO:今月のデータを円グラフ表示する -->
-			<!-- TODO:今月のデータ一覧を表示する -->
-			<!-- TODO:データ件数を表示する -->
-			<h1>データ一覧</h1>
 			<%
 			// 成功メッセージがあれば表示
             String successMessage = (String) request.getAttribute("successMessage");
@@ -50,7 +47,14 @@
 			if (failureMessage != null && !failureMessage.isEmpty()) {
 				out.println("<p class='failure'>" + failureMessage + "</p>");
 			}
+			// FLAG(YES or NO)を取得
+			String flag = (String) request.getAttribute("flag");
+			String listMessage = "データ一覧";
+			if (flag != null && !flag.isEmpty()) {
+				listMessage = (flag.equals("YES")) ? "今月のデータ一覧" : "データ一覧";
+			}
 			%>
+			<h1><%= listMessage %></h1>
 			<div class="products-ui">
 				<div>
 					<a href="<%=request.getContextPath()%>/list?order=desc&keyword=<%=keyword%>">

@@ -39,7 +39,10 @@ public class Constants {
 	public static final String REGISTER_DATA_MESSAGE = "件のデータを登録しました。";
 	public static final String UPDATE_DATA_MESSAGE = "件のデータを更新しました。";
 	public static final String DELETE_DATA_MESSAGE = "件のデータを削除しました。";
+	public static final String FLAG_YES = "YES";
+	public static final String FLAG_NO = "NO";
 	//  共通部品
+	public static final String FLAG = "flag";
 	public static final String FAILURE_MESSAGE = "failureMessage";
 	public static final String SUCCESS_MESSAGE = "successMessage";
 	public static final String EXPENSES_DATA_LIST = "expensesDataList";

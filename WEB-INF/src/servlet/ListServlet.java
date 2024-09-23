@@ -28,20 +28,46 @@ public class ListServlet extends HttpServlet {
 		order = Objects.toString(order, "");
 		String keyword = req.getParameter("keyword");
         keyword = Objects.toString(keyword, "");
-		
+		// TopPage用経費データリストのインスタンス生成
+        ArrayList<ExpensesDto> topExpensesDataList = new ArrayList<>();
 		// 経費データリストのインスタンス生成
 		ArrayList<ExpensesDto> expensesDataList = new ArrayList<>();
 		// 経費データ操作用DAOのインスタンス生成
 		ExpensesDao expensesData = new ExpensesDao();
 		try {
+			// TopPage用経費データの一覧を取得(今月分のデータ)
+			topExpensesDataList = expensesData.selectTopPage();
 			// 経費データの一覧を取得(ID指定・検索なし)
 			expensesDataList = expensesData.select(0, keyword, order);
-			if (expensesDataList.isEmpty()) {
-				// 経費データリストが空だった場合は失敗メッセージを保存
-				req.setAttribute(Constants.FAILURE_MESSAGE, Constants.NODATA_EXPENSES_MESSAGE);
+			// 並べ替え・キーワード指定なし
+			if (order.equals("") && keyword.equals("")) {
+				// TopPage用経費データがない場合は全データ取得
+				if (topExpensesDataList.isEmpty()) {
+					if (expensesDataList.isEmpty()) {
+						// 経費データリストが空だった場合は失敗メッセージを保存
+						req.setAttribute(Constants.FAILURE_MESSAGE, Constants.NODATA_EXPENSES_MESSAGE);
+					} else {
+						// 経費データリストが空じゃない場合は経費データリストを保存
+						req.setAttribute(Constants.EXPENSES_DATA_LIST, expensesDataList);
+						// TopPage用経費のデータリストが取得できなかったFLAG(NO)
+						req.setAttribute(Constants.FLAG, Constants.FLAG_NO);
+					}
+				} else {
+					// TopPage用経費データリストが空じゃない場合は経費データリストを保存
+					req.setAttribute(Constants.EXPENSES_DATA_LIST, topExpensesDataList);
+					// TopPage用経費のデータリストが取得できたFLAG(YES)
+					req.setAttribute(Constants.FLAG, Constants.FLAG_YES);
+				}
 			} else {
-				// 経費データリストが空じゃない場合は経費データリストを保存
-				req.setAttribute(Constants.EXPENSES_DATA_LIST, expensesDataList);
+				if (expensesDataList.isEmpty()) {
+					// 経費データリストが空だった場合は失敗メッセージを保存
+					req.setAttribute(Constants.FAILURE_MESSAGE, Constants.NODATA_EXPENSES_MESSAGE);
+				} else {
+					// 経費データリストが空じゃない場合は経費データリストを保存
+					req.setAttribute(Constants.EXPENSES_DATA_LIST, expensesDataList);
+					// TopPage用経費のデータリストが取得できなかったFLAG(NO)
+					req.setAttribute(Constants.FLAG, Constants.FLAG_NO);
+				}
 			}
 		} catch (Exception e) {
 			// データベース処理の例外発生時
