@@ -6,6 +6,7 @@ import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Objects;
@@ -155,4 +156,41 @@ public class ExpensesDao {
 		return rowCnt;
 	}
 	
+	// TOPPAGE用経費データの読み取り
+	public ArrayList<ExpensesDto> selectTopPage() {
+		// 取得したデータを格納するためのリスト
+		ArrayList<ExpensesDto> expensesDataList = new ArrayList<>();
+		// TOP用SELECT用のSQL
+		String sql = "SELECT * FROM expenses WHERE MONTH(date) = MONTH(CURDATE()) AND YEAR(date) = YEAR(CURDATE()) ORDER BY date ASC;";
+		// データベースへの接続・SQL文の送信準備
+		try (Connection connection = DriverManager.getConnection(Constants.URL, Constants.USER, Constants.PASSWORD);
+				Statement statement = connection.createStatement())
+		{
+			// SQL文を実行
+			ResultSet resultSet = statement.executeQuery(sql);
+			// SQLクエリの実行結果を抽出
+			while (resultSet.next()) {
+				// DTOのインスタンスに各カラムのデータをセット
+				ExpensesDto expensesData = new ExpensesDto();
+				expensesData.setId(resultSet.getInt("id"));
+				expensesData.setName(resultSet.getString("name"));
+				expensesData.setPrice(resultSet.getInt("price"));
+				expensesData.setCategory_id(resultSet.getInt("category_id"));
+				expensesData.setMemo(resultSet.getString("memo"));
+				
+				// Date型→LocalDate型へ変換
+				Date sqlDate = resultSet.getDate("date");
+				if (sqlDate != null) {
+					LocalDate localDate = sqlDate.toLocalDate();
+					expensesData.setDate(localDate);
+				}
+				// リストにデータを追加
+				expensesDataList.add(expensesData);
+			}
+		} catch (SQLException e) {
+			System.out.println(Constants.DE006 + e.getMessage());
+		}
+		// 経費データリストを返す
+		return expensesDataList;
+	}
 }
