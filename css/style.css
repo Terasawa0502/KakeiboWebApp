@@ -239,3 +239,10 @@ footer {
     border-radius: 4px;
     box-shadow: 1px 2px 4px rgb(0 0 0 / 15%);
 }
+
+#expenseChart {
+    max-width: 300px; /* 幅を制限 */
+    max-height: 300px; /* 高さを制限 */
+    width: 100%; /* 幅を100%に設定 */
+    height: auto; /* 高さを自動に設定 */
+}
